@@ -38,7 +38,7 @@ class Patient {
     this._state = obj['state'];
   }
 
-  String get code => _patientId;
+  String get patientId => _patientId;
   String get photo => _photo;
   String get name => _name;
   String get lastName => _lastName;

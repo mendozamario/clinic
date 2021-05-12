@@ -14,4 +14,11 @@ class Appoiment {
     this._careStaffId,
     this._patientId,
   );
+
+  int get appoimentId => _appoimentId;
+  String get appoimentState => _appoimentState;
+  DateTime get dateService => _dateService;
+  String get description => _description;
+  String get careStaffId => _careStaffId;
+  String get patientId => _patientId;
 }
