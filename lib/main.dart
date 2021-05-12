@@ -1,4 +1,4 @@
-import 'package:clinic/login.dart';
+import 'package:clinic/screens/login.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());

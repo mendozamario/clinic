@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:clinic/screens/home.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -77,6 +78,13 @@ class _LoginState extends State<Login> {
     return Container(
       margin: EdgeInsets.fromLTRB(0, 10, 2, 0),
       child: ElevatedButton(
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomeScreen(),
+              ));
+        },
         child: Text('Iniciar Sesion'.toUpperCase(),
             style: TextStyle(color: Colors.white, fontSize: 18.0)),
         style: ButtonStyle(
