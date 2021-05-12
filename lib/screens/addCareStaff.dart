@@ -8,72 +8,73 @@ class AddCareStaff extends StatefulWidget {
 }
 
 class _AddCareStaffState extends State<AddCareStaff> {
-
   TextEditingController codeController;
   TextEditingController pictureController;
-  TextEditingController nameController;
-  TextEditingController lastNameController;
+  TextEditingController fullNameController;
   TextEditingController typeController;
-  TextEditingController statusController;
-  TextEditingController workingController;
+
+  bool statusController = false;
+  bool workingController = false;
 
   @override
-  void initState() { 
+  void initState() {
     super.initState();
-    
+
     codeController = TextEditingController();
     pictureController = TextEditingController();
-    nameController = TextEditingController();
-    lastNameController = TextEditingController();
+    fullNameController = TextEditingController();
     typeController = TextEditingController();
-    statusController = TextEditingController();
-    workingController = TextEditingController();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-       child: SingleChildScrollView(
-         child: createFormUI(),
-       ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Agregar Personal de Apoyo'),
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        child: createFormUI(),
+      ),
     );
   }
 
-  Widget formDesign(TextEditingController controller, String text, Icon icon) {
+  Widget textFieldDesign(TextEditingController controller, String text,
+      TextInputType keyboarType) {
     return Container(
-      padding: EdgeInsets.all(10.0),
-      child: TextField(
-        controller: controller,
-        decoration: InputDecoration(
-          labelText: text,
-          hintStyle: TextStyle(color: Colors.lightGreen),
-          filled: true,
-          fillColor: Colors.white70,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-            borderSide: BorderSide(color: Colors.lightGreen, width: 2.0),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10.0)),
-            borderSide: BorderSide(color: Colors.lightGreen),
-          ),
-          prefixIcon: icon,
-          suffix: GestureDetector(
-            child: Icon(Icons.cancel),
-            onTap: (){
-              controller.clear();
-            },
-          )
-        )
-      ),
-    );
+        margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
+        child: Column(
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.fromLTRB(10, 0, 0, 5.0),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  text,
+                  style: TextStyle(),
+                ),
+              ),
+            ),
+            TextFormField(
+              autofocus: false,
+              keyboardType: keyboarType,
+              decoration: InputDecoration(
+                  contentPadding: EdgeInsets.fromLTRB(20, 10, 20, 10),
+                  border: OutlineInputBorder(
+                      borderRadius: new BorderRadius.all(Radius.circular(10)))),
+            ),
+          ],
+        ));
   }
 
   Widget buttonDesign() {
     return Container(
       padding: EdgeInsets.all(20.0),
       child: ElevatedButton(
-        child: Text('Guardar personal'.toUpperCase(), style: TextStyle(fontSize: 18.0, color: Colors.white),),  
+        child: Text(
+          'Guardar personal'.toUpperCase(),
+          style: TextStyle(fontSize: 18.0, color: Colors.white),
+        ),
         style: ButtonStyle(
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
@@ -95,16 +96,45 @@ class _AddCareStaffState extends State<AddCareStaff> {
   Widget createFormUI() {
     return Column(
       children: <Widget>[
-        Text('AGREGAR PACIENTE', style: TextStyle(fontSize: 34.0, color: Colors.lightGreen, fontWeight: FontWeight.bold),),
-        formDesign(codeController, 'Ingrese su codigo', Icon(Icons.cancel)),
-        formDesign(pictureController, 'Ingrese su imagen', Icon(Icons.cancel)),
-        formDesign(nameController, 'Ingrese su Nombre', Icon(Icons.cancel)),
-        formDesign(lastNameController, 'Ingrese su apellido', Icon(Icons.cancel)),
-        formDesign(typeController, 'Ingrese su tipo', Icon(Icons.cancel)),
-        formDesign(statusController, 'Ingrese su estado', Icon(Icons.cancel)),
-        formDesign(workingController, 'Ingrese su estado de trabajo', Icon(Icons.cancel)),
+        textFieldDesign(codeController, 'Codigo', TextInputType.number),
+        textFieldDesign(
+            fullNameController, 'Nombre Completo', TextInputType.text),
+        textFieldDesign(typeController, 'Tipo', TextInputType.text),
+        createSwitch(statusController, 'Estado'),
+        createSwitch(workingController, 'Trabajando'),
         buttonDesign(),
       ],
+    );
+  }
+
+  Widget createSwitch(bool controller, String label) {
+    return Container(
+      margin: EdgeInsets.fromLTRB(20, 20, 20, 0),
+      child: Column(
+        children: <Widget>[
+          new Align(
+            alignment: Alignment.topLeft,
+            child: Text(
+              label,
+              style: TextStyle(),
+            ),
+          ),
+          new Align(
+            alignment: Alignment.topLeft,
+            child: Switch(
+              value: controller,
+              onChanged: (value) {
+                setState(() {
+                  controller = value;
+                  print(controller);
+                });
+              },
+              activeColor: Colors.green,
+              activeTrackColor: Colors.lightGreen,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
