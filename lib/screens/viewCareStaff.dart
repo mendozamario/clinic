@@ -12,11 +12,12 @@ class CareStaffScreen extends StatefulWidget {
 
 class _CareStaffScreenState extends State<CareStaffScreen> {
   List<CareStaff> careStaffs = [
+    CareStaff('1066285875', 'notpic', 'Mario', 'Mendoza', 'Medico General', 0,
+        0, '123'),
     CareStaff(
-        '1066285875', 'notpic', 'Mario Mendoza', 'Medico General', true, true),
-    CareStaff('8677482', 'notpic', 'Ricardo Mendoza', 'Odntologo', true, true),
-    CareStaff('26825680', 'notpic', 'Nurys Rodriguez', 'Trabajadora Social',
-        true, true),
+        '8677482', 'notpic', 'Ricardo', 'Mendoza', 'Odntologo', 1, 1, '123'),
+    CareStaff('26825680', 'notpic', 'Nurys', 'Rodriguez', 'Trabajadora Social',
+        1, 1, '123'),
   ];
 
   @override
@@ -32,11 +33,12 @@ class _CareStaffScreenState extends State<CareStaffScreen> {
           itemCount: careStaffs.length,
           itemBuilder: (context, index) {
             return cardContact(
-                careStaffs[index].picture,
-                careStaffs[index].fullName,
-                careStaffs[index].code,
-                careStaffs[index].type,
-                Colors.red);
+                careStaffs[index].photo,
+                careStaffs[index].name,
+                careStaffs[index].lastName,
+                careStaffs[index].careStaffId,
+                careStaffs[index].turn,
+                (careStaffs[index].state == 1) ? Colors.green : Colors.red);
           },
         ),
       ),
@@ -50,8 +52,8 @@ class _CareStaffScreenState extends State<CareStaffScreen> {
     );
   }
 
-  Widget cardContact(String profilePicture, String name, String code,
-      String type, Color color) {
+  Widget cardContact(String profilePicture, String name, String lastName,
+      String code, int turn, Color color) {
     return InkWell(
       child: Container(
           padding: EdgeInsets.fromLTRB(0, 0, 0, 7),
@@ -71,15 +73,15 @@ class _CareStaffScreenState extends State<CareStaffScreen> {
                     Column(
                       children: <Widget>[
                         Text(
-                          name,
+                          "$name $lastName",
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          'C.C. ${code}',
+                          'C.C. $code',
                           style: TextStyle(fontSize: 16),
                         ),
-                        Text('Cargo. ${type}')
+                        Text('Cargo. $turn')
                       ],
                     ),
                     Spacer(),

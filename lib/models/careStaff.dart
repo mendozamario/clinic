@@ -1,17 +1,13 @@
 class CareStaff {
-  String code;
-  String picture;
-  String fullName;
-  String type;
-  bool status;
-  bool working;
+  String careStaffId;
+  String photo;
+  String name;
+  String lastName;
+  String job;
+  int state;
+  int turn;
+  String password;
 
-  CareStaff(
-    this.code,
-    this.picture, 
-    this.fullName, 
-    this.type,
-    this.status,
-    this.working
-  );
+  CareStaff(this.careStaffId, this.photo, this.name, this.lastName, this.job,
+      this.state, this.turn, this.password);
 }
