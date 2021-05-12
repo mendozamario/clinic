@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:clinic/models/careStaff.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:clinic/screens/addCareStaff.dart';
-
 import 'addCareStaff.dart';
 
 class CareStaffScreen extends StatefulWidget {
