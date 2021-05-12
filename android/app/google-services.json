@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "19648479516",
+    "project_id": "buendoctorclinic",
+    "storage_bucket": "buendoctorclinic.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:19648479516:android:1983d0ee4a479b6238bad9",
+        "android_client_info": {
+          "package_name": "com.example.clinic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "19648479516-fogmfbqbtq5qb83v57cavrfsjce74rdf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2mPX7KOozEaxDkOf425gUTNFJtIniNyA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "19648479516-fogmfbqbtq5qb83v57cavrfsjce74rdf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
